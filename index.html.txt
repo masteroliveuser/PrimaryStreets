@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="https://media.gettyimages.com/id/2219542199/video/aerial-shot-tracking-los-angeles-light-rail-cars-pulling-into-station.mp4?s=mp4-640x640-gi&amp;k=20&amp;c=DEywG3iRaAfi4cz6GZak7mwPau2ij-y1v3zC1i7ncAs=" type="video/mp4">
+  </video>
+</body>
+</html>
