@@ -1,40 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Background Video</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
+<video id="introVideo" autoplay muted playsinline
+       style="width:100%; height:100%; object-fit:cover;">
+</video>
 
-  <video autoplay muted playsinline preload="auto">
-    <source
-      src="./PrimaryStreetsVideoProject1-logo-reveal.mp4"
-      type="video/mp4"
-    >
-  </video>
+<script>
+  const clips = [
+    "PS_Video_8_DCP_1080p.mp4",
+    "PS_Video_7_DCP_1080p.mp4",
+    "PS_Video_6_DCP_1080p.mp4",
+    "PS_Video_5_DCP_1080p.mp4",
+    "PS_Video_4_DCP_1080p.mp4",
+    "PS_Video_3_DCP_1080p.mp4",
+    "PS_Video_2_DCP_1080p.mp4",
+  ];
 
-</body>
-</html>
+  // Avoid the clip shown on the previous page load.
+  let previous = null;
+  try {
+    previous = sessionStorage.getItem("lastIntroClip");
+  } catch {}
+
+  const choices = clips.length > 1
+    ? clips.filter(clip => clip !== previous)
+    : clips;
+
+  const selected =
+    choices[Math.floor(Math.random() * choices.length)];
+
+  try {
+    sessionStorage.setItem("lastIntroClip", selected);
+  } catch {}
+
+  const video = document.getElementById("introVideo");
+  video.src = selected;
+  video.play().catch(() => {});
+</script>
